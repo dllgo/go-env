@@ -10,18 +10,15 @@ SCRIPT_NAME=$0
 RELEASE_URL="https://golang.org/dl/"
 
 # Downlaod link
-DOWNLOAD_URL="https://dl.google.com/go/"
-#DOWNLOAD_URL="http://127.0.0.1/"
+DOWNLOAD_URL="https://dl.google.com/go/" 
 
 # GOPROXY
 GOPROXY_TEXT="https://proxy.golang.org"
 
 # Set environmental for golang
-#PROFILE="/etc/profile"
 PROFILE="${HOME}/.bashrc"
 
 # Set GOPATH PATH
-#GO_PATH="/data/go"
 GO_PATH="${HOME}/.go/path"
 
 # Is GWF
@@ -179,7 +176,6 @@ setEnvironment() {
 
     if [ -z "`grep 'export\sGOROOT' ${profile}`" ];then
         echo -e "\n## GOLANG" >> $profile
-        #echo "export GOROOT=/usr/local/go" >> $profile
         echo "export GOROOT=${HOME}/.go/go" >> $profile
     fi
 
@@ -257,7 +253,7 @@ printf "
 # Show help message
 showHelpMessage() {
 printf "
-Go install
+Go env
 
 Usage: %s [-h] [-v version] [-d gopath]
 
@@ -301,12 +297,12 @@ downloadFile $BINARY_URL $DOWNLOAD_FILE
 if [ ! -d "${HOME}/.go/path" ]; then
     mkdir -p ${HOME}/.go/path
 fi
-#rm -rf /usr/local/go
-#tar -C /usr/local/ -zxf $DOWNLOAD_FILE && \
 rm -rf ${HOME}/.go/go
 tar -C ${HOME}/.go -zxf $DOWNLOAD_FILE && \
 rm -rf $DOWNLOAD_FILE
- 
+if [ "${OS}" == "darwin" ]; then
+    PROFILE="${HOME}/.zshrc"
+fi
 setEnvironment $PROFILE
  
 # Make environmental is enable
