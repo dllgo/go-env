@@ -9,12 +9,12 @@ Go 一键安装脚本
 ### 在线安装
 #### 默认安装
 ```sh
-$ curl https://github.com/dllgo/go-env/blob/master/env.sh | bash
+$ curl https://raw.githubusercontent.com/dllgo/go-env/master/env.sh | bash
 ```
 
 #### 自定义安装
 ```sh
-$ curl -SL https://github.com/dllgo/go-env/blob/master/env.sh | bash /dev/stdin -v 1.13.5 -d /users/lyg/desktop/go
+$ curl -SL https://raw.githubusercontent.com/dllgo/go-env/master/env.sh | bash /dev/stdin -v 1.13.5 -d /users/lyg/desktop/go
 ```
 
 ### 离线执行
