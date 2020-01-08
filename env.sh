@@ -2,6 +2,7 @@
 
 # Golang-env
 #./env.sh -v 1.13.5 -d /Users/lyg/Desktop/go
+
 # Script file name
 SCRIPT_NAME=$0
 
