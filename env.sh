@@ -65,8 +65,6 @@ initOS() {
         darwin) OS='darwin';;
         linux) OS='linux';;
         freebsd) OS='freebsd';;
-#        mingw*) OS='windows';;
-#        msys*) OS='windows';;
         *) printf "\e[1;31mOS %s is not supported by this installation script\e[0m\n" $OS; exit 1;;
     esac
     echo "OS = ${OS}"
@@ -175,7 +173,8 @@ setEnvironment() {
     profile="${1}"  
 
     if [ -z "`grep 'export\sGOROOT' ${profile}`" ];then
-        echo -e "\n## GOLANG" >> $profile
+        echo "\n## GOLANG" >> $profile
+        #echo "export GOROOT=/usr/local/go" >> $profile
         echo "export GOROOT=${HOME}/.go/go" >> $profile
     fi
 
@@ -300,6 +299,10 @@ fi
 rm -rf ${HOME}/.go/go
 tar -C ${HOME}/.go -zxf $DOWNLOAD_FILE && \
 rm -rf $DOWNLOAD_FILE
+
+if [ "${OS}" == "darwin" ]; then
+    PROFILE="${HOME}/.zshrc"
+fi
 
 setEnvironment $PROFILE
  
