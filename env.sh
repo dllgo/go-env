@@ -300,9 +300,7 @@ fi
 rm -rf ${HOME}/.go/go
 tar -C ${HOME}/.go -zxf $DOWNLOAD_FILE && \
 rm -rf $DOWNLOAD_FILE
-if [ "${OS}" == "darwin" ]; then
-    PROFILE="${HOME}/.zshrc"
-fi
+
 setEnvironment $PROFILE
  
 # Make environmental is enable
